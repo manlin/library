@@ -1,4 +1,24 @@
 import { Books } from '../imports/api/books.js';
+import { fetchBookInfoViaISBN } from '../imports/lib/douban.js';
+
+const isbns = [
+    {
+        'title': '深入浅出Node.js',
+        'isbn': '9787115335500'
+    },
+    {
+        'title': 'C程序设计语言',
+        'isbn': '9787111128069'
+    },
+    {
+        'title': '代码大全（第2版）',
+        'isbn': '9787121022982'
+    },
+    {
+        'title': '算法导论（原书第2版）',
+        'isbn': '9787111187776'
+    }
+];
 
 const data = [
     {
@@ -18,7 +38,15 @@ const data = [
 ];
 
 if(Books.find({}).count() === 0) {
+   /*
     _.each(data, (item) => {
         Books.insert(item);
+    });
+    */
+
+    _.each(isbns, (isbn) => {
+        let book = fetchBookInfoViaISBN(isbn.isbn);
+        console.log(book);
+        if(book) Books.insert(book);
     });
 }

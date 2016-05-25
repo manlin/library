@@ -1,7 +1,7 @@
 <template name="bookList">
     {{#each books}}
         <div class="book">
-            <h3><a href="/book/{{_id}}">{{title}}</a></h3>
+            <h3><a href="/book/{{_id}}">{{title}} - {{author}}</a></h3>
         </div>
     {{/each}}
 </template>
