@@ -11,6 +11,10 @@ Template.bookAdd.events({
         const isbn = inst.$("#isbn").get(0).value;
 
         Meteor.call('fetchBookInfoFromDouban', isbn, (err, data) => {
+            if(err) {
+                console.log(err);
+                return;
+            }
             console.log(data);
             FlowRouter.go('/book/' +  data);
         });

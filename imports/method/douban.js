@@ -9,11 +9,20 @@ if(Meteor.isServer) {
         fetchBookInfoFromDouban: (isbn) => {
             //this.unblock();
             try {
+                let bk = Books.findOne({$or: [{'isbn10': isbn}, {'isbn13': isbn}]});
+                if(bk) return bk._id;
+
                 let book = fetchBookInfoViaISBN(isbn);
                 return Books.insert(book);
             }
             catch(e) {
-                return e.message;
+                console.log('>> in fetchBookInfoViaISBN:');
+                console.log(e);
+                let msg = {
+                    statusCode: e.response.statusCode,
+                    message: e.response.content
+                };
+                throw new Meteor.Error(msg.statusCode, msg.message);
             }
         }
     });

@@ -1,4 +1,22 @@
 <Template name="bookDetail">
-    This is book detail page!
-    Book Title: {{title}}
+    {{#with book}}
+    <h1>{{title}}</h1>
+    <div class="content">
+        <div class="artical">
+            <div class="mainpic">
+                <a href="{{images.large}}" title="{{title}}">
+                    <img src="{{image}}" alt="{{title}}" title="点击查看大图">
+                </a>
+            </div>
+            <div class="info">
+                <div><span>作者:</span><span>{{author}}</span></div>
+                <div><span>作者简介:</span><span>{{author_intro}}</span></div>
+                <div><span>出版社:</span><span>{{publisher}}</span></div>
+                <div><span>出版年:</span><span>{{pubdate}}</span></div>
+                <div><span>ISBN:</span><span>{{isbn13}}</span></div>
+                <div><span>简介:</span><span>{{summary}}</span></div>
+            </div>
+        </div>
+    </div>
+    {{/with}}
 </Template>

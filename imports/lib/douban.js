@@ -23,14 +23,14 @@ function extractBookInfo(data) {
 }
 
 export const  fetchBookInfoViaISBN = function(isbn)  {
-            try {
+            //try {
                 var uri = 'http://api.douban.com/v2/book/isbn/' + isbn;
                 var result = HTTP.call('GET', uri);
                 return extractBookInfo(result.data);
-            }
-            catch(e) {
-                console.log('>> in fetchBookInfoViaISBN:');
-                console.log(e.message);
-                return false;
-            }    
+            //}
+            //catch(e) {
+            //    console.log('>> in fetchBookInfoViaISBN:');
+            //    console.log(e.message);
+            //    return false;
+            //}    
 }

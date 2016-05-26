@@ -2,7 +2,7 @@
   "name": "library",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run -p 3030"
   },
   "dependencies": {
     "meteor-node-stubs": "~0.2.0"
